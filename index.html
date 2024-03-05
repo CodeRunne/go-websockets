@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+  <script>
+    // enable websocket connection
+    const socket = new WebSocket("ws://localhost:3000/country-name-delegator")
+
+    // event listener for open event
+    socket.onopen = (event) => {
+      console.log("Connected to the websocket server")
+    }
+
+    // event listener for receiving messages
+    socket.onmessage = (event) => {
+      console.log("Received:", event.data)
+    }
+
+    // handling errors on the client
+    socket.onerror = (error) => {
+      console.log(`Error occured: ${error.message}`)
+    }
+
+    // event listener for close event
+    socket.onclose = (event) => {
+      console.log("Disconnected from the websocket server")
+    }
+  </script>
+</body>
+</html>
